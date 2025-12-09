@@ -24,6 +24,22 @@ body {
     box-sizing: border-box;
 }
 
+#breadcrumbs{
+    position: fixed;
+    top: 45px;
+    left: 5px;
+
+    color: grey;
+}
+
+#breadcrumbs2{
+    position: fixed;
+    top: 45px;
+    left: 140px;
+
+    color: black;
+}
+
 #branding{
     position: absolute;
     left: 20px;
@@ -198,6 +214,16 @@ body {
     border-radius: 5px;
 }
 
+#submit_confirmation_yes:hover{
+    transform: scale(1.02);
+    font-weight: bold;
+}
+
+#submit_confirmation_no:hover{
+    transform: scale(1.02);
+    font-weight: bold;
+}
+
 #score_box_overlay {
     position: fixed;
     top: 0;
@@ -255,6 +281,26 @@ body {
 
     font-size: 20px;
     color: white;
+}
+
+#question_answered{
+    position: fixed;
+    bottom: 120px;
+    right: -150px;
+
+    padding: 5px;
+    text-align: center;
+    width: 150px;
+    height: 60px;
+    background-color: orange;
+    color: white;
+
+    box-sizing: border-box;
+    border: 2px solid orange;
+    border-radius: 20px;
+    font-size: 15px;
+
+    transition: right 1s ease;
 }
 
 @media (max-width: 800px){
