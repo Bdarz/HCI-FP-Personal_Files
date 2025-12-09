@@ -64,4 +64,4 @@ Part C. Evaluation
 
 Links:
 Repo: https://github.com/Bdarz/HCI-FP-Personal_Files
-Live: https://bdarz.github.io/HCI-FP-Personal_Files/
+Live: https://bdarz.github.io/HCI-FP-Personal_Files/index.html
