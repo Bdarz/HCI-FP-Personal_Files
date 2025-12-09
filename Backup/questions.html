@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <link rel="stylesheet" href="questions.css"/>
+</head>
+<body>
+    <header id="topbar">
+        <div id="branding">
+            Fluent Nusantara
+        </div>
+        <div id="title">
+            Title Very Long Long
+        </div>
+    </header>
+
+    <div id="breadcrumbs">
+        <p>Dashboard > Title ></p>
+    </div>
+    <div id="breadcrumbs2">
+        <p>Quiz</p>
+    </div>
+
+    <main id="QA">
+        <section class="question">
+            <p class = "num"></p>
+            <p>Bob</p>
+            <button class="choice_0">
+                Is Bob
+            </button>
+            <button class="choice_1">
+                Is not Bob
+            </button>
+            <button class="choice_2">
+                Maybe Bob
+            </button>
+            <button class="choice_3">
+                Bobbert
+            </button>
+        </section>
+        <section class="question">
+            <p class = "num"></p>
+            <p>Bob</p>
+            <button class="choice_0">
+                Is Bob
+            </button>
+            <button class="choice_1">
+                Is not Bob
+            </button>
+            <button class="choice_2">
+                Maybe Bob
+            </button>
+            <button class="choice_3">
+                Bobbert
+            </button>
+        </section>
+    </main>
+
+    <div id="lineofprogress">
+        <div id="progress"></div>
+    </div>
+
+    <nav id="controls">
+        <button id="back">
+            Back
+        </button>
+        <button id="next">
+            Next
+        </button>
+    </nav>
+
+    <div id="score_box_overlay"></div>
+
+    <div id="submit_confirmation">
+        <div id="submit_confirmation_text">
+            Are you sure you want to submit?
+        </div>
+        <div id="submit_confirmation_buttons">
+            <button id="submit_confirmation_yes">
+                Confirm
+            </button>
+            <button id="submit_confirmation_no">
+                Not Yet
+            </button>
+        </div>
+    </div>
+
+    <div id="score_box">
+        <div id="score_box_text1">
+            You have completed the quiz!
+        </div>
+        <div id="score_box_text2">
+            Your score is:
+        </div>
+        <div id="score">
+            <!-- JS will fill this one -->
+        </div>
+        <div id="score_message">
+            <!-- JS will fill this one -->
+        </div>
+        <button id="score_return_to_dashboard">
+            Return to Dashboard
+        </button>
+    </div>
+
+    <div id="question_answered">
+        <p>Answer Accepted</p>
+    </div>
+
+    <script>
+        const questions = document.querySelectorAll(".question")
+        const correct_answers = [0, 1, 0, 0, 3]
+
+        let chosen_answer = new Array(questions.length).fill(null)
+        let current_number = 0
+
+        function progress_bar(){
+            progress = (100 / (questions.length)) * (current_number)
+            document.getElementById("progress").style.width = progress + "%"
+        }
+
+        function whatNumberAmI(current_number){
+            for (let i = 0; i < questions.length; i++){
+                questions[i].style.display = "none"
+            }
+            questions[current_number].style.display = "block"
+            questions[current_number].querySelector(".num").textContent = (current_number + 1) + "."
+
+            if (current_number == 0){
+                document.getElementById("back").classList.add("greyedout")
+            }else{
+                document.getElementById("back").classList.remove("greyedout")
+            }
+
+            if (chosen_answer[current_number] == null){
+                document.getElementById("next").classList.add("greyedout")
+                have_answered = false
+            }else{
+                document.getElementById("next").classList.remove("greyedout")
+                have_answered = true
+            }
+
+            if (current_number == questions.length - 1){
+                document.getElementById("next").textContent = "Submit"
+            }else{
+                document.getElementById("next").textContent = "Next"
+            }
+            progress_bar()
+        }
+
+        function whatDidIChoose(option, choice){
+            option.onclick = function(){
+                chosen_answer[current_number] = choice
+                document.getElementById("question_answered").style.right = "-500px"
+                const options = questions[current_number].querySelectorAll("button")
+                for (let i = 0; i < options.length; i++){
+                    options[i].classList.remove("selected")
+                }
+                option.classList.add("selected")
+                whatNumberAmI(current_number)
+            }
+        }
+
+        function abilityToChoose(option, choice){
+            document.querySelectorAll("." + option).forEach(function(i){
+                whatDidIChoose(i, choice)
+            })
+        }
+
+        abilityToChoose("choice_0", 0)
+        abilityToChoose("choice_1", 1)
+        abilityToChoose("choice_2", 2)
+        abilityToChoose("choice_3", 3)
+        
+        function submit_confirmation(){
+            document.getElementById("score_box_overlay").style.opacity = "1"
+            document.getElementById("score_box_overlay").style.pointerEvents = "auto"
+            document.getElementById("submit_confirmation").style.top = "300px"
+
+            document.getElementById("submit_confirmation_yes").onclick = function(){
+                document.getElementById("submit_confirmation").style.opacity = "0"
+                submit()
+            }
+
+            document.getElementById("submit_confirmation_no").onclick = function(){
+                document.getElementById("score_box_overlay").style.opacity = "0"
+                document.getElementById("score_box_overlay").style.pointerEvents = "none"
+                document.getElementById("submit_confirmation").style.top = "-500px"
+            }
+        }
+
+        function submit(){
+            let score = 0
+            for (let i = 0; i < questions.length; i++){
+                if (chosen_answer[i] == correct_answers[i]){
+                    score ++
+                }
+            }
+            grade = score + "/" + questions.length
+            document.getElementById("score").textContent = grade
+
+            if (score < questions.length / 2){
+                message = "Try again next time!"
+            }
+            else if (score < questions.length){
+                message = "Good Job!"
+            }
+            else{
+                message = "A Perfect Score!!"
+            }    
+            document.getElementById("score_message").textContent = message
+
+            document.getElementById("score_box").style.top = "120px";
+            
+            document.getElementById("score_return_to_dashboard").onclick = function(){
+                window.location.replace("Course Page.html")
+            }
+        }
+
+        document.getElementById("next").onclick = function(){
+            if (current_number < questions.length - 1 && have_answered != false){
+                current_number ++
+                document.getElementById("question_answered").style.right = "100px"
+                whatNumberAmI(current_number)
+            }
+            else if (have_answered != false){
+                submit_confirmation();
+            }
+        }
+
+        document.getElementById("back").onclick = function(){
+            if (current_number > 0){
+                current_number --
+                whatNumberAmI(current_number)
+            }
+        }
+
+        whatNumberAmI(current_number)
+    </script>
+</body>
+</html>
+
