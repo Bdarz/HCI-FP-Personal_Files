@@ -1,3 +1,16 @@
+Name: Alvyn Ilham Kurniawan
+Student ID: 2902696281
+
+Part A. Mockup
+   Before:
+   <img width="1920" height="1080" alt="PreDesignedPage" src="https://github.com/user-attachments/assets/5f68047f-6cf0-4b1e-b3fd-7eb62ce0891c" />
+
+   After:
+   <img width="1920" height="1080" alt="AfterDesignMockup" src="https://github.com/user-attachments/assets/af881404-cce2-433d-b9f9-f9e770886b0e" />
+
+   I introduced better navigation in the form of breadcrumbs and a progress bar. I made data presentation better with boxes and borders. Overall, i made the design cleaner so that users will be able to more easily see what is going on and interact with the quiz.
+
+
 Part B. Implementation of 6 Design Patterns from GL
 
 1. Navigation
