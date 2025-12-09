@@ -62,4 +62,6 @@ Part B. Implementation of 6 Design Patterns from GL
 Part C. Evaluation
 <img width="1920" height="1080" alt="Evaluation" src="https://github.com/user-attachments/assets/b12a90b1-c8ae-4985-80fe-1af9bfb587ac" />
 
-
+Links:
+Repo: https://github.com/Bdarz/HCI-FP-Personal_Files
+Live: https://bdarz.github.io/HCI-FP-Personal_Files/
