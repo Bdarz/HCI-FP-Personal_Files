@@ -9,6 +9,7 @@ Part A. Mockup
    <img width="1920" height="1080" alt="AfterDesignMockup" src="https://github.com/user-attachments/assets/af881404-cce2-433d-b9f9-f9e770886b0e" />
 
    I introduced better navigation in the form of breadcrumbs and a progress bar. I made data presentation better with boxes and borders. Overall, i made the design cleaner so that users will be able to more easily see what is going on and interact with the quiz.
+   The original design is bland, lacks clear structuring and data presentation layout. It lacks clear navigation. Meanwhile, the new design contains all of those through boxes, borders, breadcrumbs, progress bars, etc.
 
 
 Part B. Implementation of 6 Design Patterns from GL
