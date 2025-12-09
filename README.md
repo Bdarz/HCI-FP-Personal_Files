@@ -59,3 +59,7 @@ Part B. Implementation of 6 Design Patterns from GL
 
    I put a box and border around the question and answers. This is important because user needs to be able to quickly read the question and know what answers are available. If the user doesn't quickly know what they are going to answer, this will be a big problem. Adding a box increases the data presentation quality of the app and makes user experience faster and requires less effort.
 
+Part C. Evaluation
+<img width="1920" height="1080" alt="Evaluation" src="https://github.com/user-attachments/assets/b12a90b1-c8ae-4985-80fe-1af9bfb587ac" />
+
+
